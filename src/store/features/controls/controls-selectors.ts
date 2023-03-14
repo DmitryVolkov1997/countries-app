@@ -1,8 +1,9 @@
 import {RootState} from '../../store'
 
-const selectAllRegions = (state: RootState) => state.control
-const selectSearch = (state: RootState) => state.control
-const selectRegion = (state: RootState) => state.control
+const selectAllRegions = (state: RootState) => state.controls
+const selectSearch = (state: RootState) => state.controls
+const selectRegion = (state: RootState) => state.controls
+const selectControls = (state: RootState) => state.controls
 
 
-export {selectAllRegions, selectSearch, selectRegion}
+export {selectAllRegions, selectSearch, selectRegion, selectControls}

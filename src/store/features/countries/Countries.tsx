@@ -7,8 +7,8 @@ import {CountryInfo} from 'types/country'
 
 
 export const Countries = () => {
-	const [countries, {status, error}] = useCountries()
-
+	const [countries, {status, error, qty}] = useCountries()
+	console.log(countries)
 	return (
 		<>
 			{status === 'loading' && (

@@ -1,10 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 import {ALL_COUNTRIES} from 'configs/constants'
-import { Country } from 'types/country'
+import {Country} from 'types/country'
 
 
-export const fetchCountries = createAsyncThunk<Country[], undefined, { rejectValue: string }>(
+export const fetchCountries = createAsyncThunk<Country[],  undefined, { rejectValue: string }>(
 	'countries/fetchCountries',
 	async (_, {rejectWithValue}) => {
 		try {

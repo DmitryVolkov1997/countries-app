@@ -1,18 +1,24 @@
-import {useAppDispatch} from '../../redux-hooks'
+import {useAppDispatch, useAppSelector} from '../../redux-hooks'
 import {useEffect} from 'react'
 import {fetchCountries} from './countries-actions'
 import {useSelector} from 'react-redux'
-import {selectAllCountries, selectCountriesInfo} from './countries-selectors'
+import {selectAllCountries, selectCountriesInfo, selectVisibleCountries} from './countries-selectors'
 import {Country} from 'types/country'
+import {selectControls} from '../controls/controls-selectors'
 
 export const useCountries = (): [Country[], ReturnType<typeof selectCountriesInfo>] => {
 	const dispatch = useAppDispatch()
-	const {countries} = useSelector(selectAllCountries)
-	const {status, error} = useSelector(selectCountriesInfo)
+	const controls = useSelector(selectControls)
+	const countries = useAppSelector
+	(state => selectVisibleCountries(state, controls))
+	const {status, error, qty} = useSelector(selectCountriesInfo)
+
 
 	useEffect(() => {
-		dispatch(fetchCountries())
-	}, [])
+		if (!qty) {
+			dispatch(fetchCountries())
+		}
+	}, [qty, dispatch])
 
-	return [countries, {status, error}]
+	return [countries, {status, error, qty}]
 }
