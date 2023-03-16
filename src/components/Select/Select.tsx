@@ -1,7 +1,7 @@
 import styles from './Select.module.sass'
 import {Select as UISelect} from '@chakra-ui/react'
-import {Region} from 'types'
 import {useRegion} from '../../store/features/controls/use-regions'
+import {Region} from 'types/region'
 
 interface SelectProps {
 	regions: Region[]
