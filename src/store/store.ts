@@ -1,10 +1,12 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-import controlReducer from './features/controls/controls-slice'
+import controlsReducer from './features/controls/controls-slice'
 import countriesReducer from './features/countries/countries-slice'
+import detailsReducer from './features/details/details-slice'
 
 const rootReducer = combineReducers({
-	controls: controlReducer,
-	countries: countriesReducer
+	controls: controlsReducer,
+	countries: countriesReducer,
+	details: detailsReducer
 })
 export const store = configureStore({
 	reducer: rootReducer,

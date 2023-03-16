@@ -4,11 +4,12 @@ import {CountryItem, Spinner} from 'components'
 import {useCountries} from './use-countries'
 import {Box, Heading} from '@chakra-ui/react'
 import {CountryInfo} from 'types/country'
+import {formatNumber} from '../../../utils/format-number'
 
 
 export const Countries = () => {
-	const [countries, {status, error, qty}] = useCountries()
-	console.log(countries)
+	const [countries, {status, error}] = useCountries()
+
 	return (
 		<>
 			{status === 'loading' && (
@@ -27,7 +28,7 @@ export const Countries = () => {
 						info: [
 							{
 								title: 'Population',
-								description: c.population.toString()
+								description: formatNumber(c.population)
 							},
 							{
 								title: 'Region',

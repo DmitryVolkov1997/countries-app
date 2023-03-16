@@ -3,6 +3,8 @@ import {Box, Button, Text} from '@chakra-ui/react'
 import {MoonIcon, SunIcon} from '@chakra-ui/icons'
 import {DetailedHTMLProps, HTMLAttributes} from 'react'
 import cn from 'classnames'
+import {useCleanup} from '../../store/features/controls/use-cleanup'
+import {Link} from 'react-router-dom'
 
 interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	toggleColorMode: () => void
@@ -10,12 +12,14 @@ interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
 }
 
 export const Header = ({toggleColorMode, colorMode, className, ...props}: HeaderProps) => {
+	const cleanUp = useCleanup()
+
 	return (
 		<Box as="header" className={cn(styles.header, className)} boxShadow="base" {...props}>
 			<Box className={styles.headerRow}>
-				<Text className={styles.headerText}>
+				<Link to={'/'} className={styles.headerText} onClick={cleanUp}>
 					Where is the world?
-				</Text>
+				</Link>
 
 				<Button className={styles.headerButton} background={"transparent"}
 						leftIcon={colorMode === 'light' ? <MoonIcon/> : <SunIcon/>}

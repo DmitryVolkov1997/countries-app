@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { Region } from 'types/region'
+import {Region} from 'types/region'
 
 type ControlsSlice = {
 	regions: Region[]
@@ -26,8 +26,12 @@ const controlsSlice = createSlice({
 		setRegion(state, action: PayloadAction<string>) {
 			state.region = action.payload
 		},
+		clearControls(state) {
+			state.search = ''
+			state.region = ''
+		}
 	}
 })
 
-export const {setRegions, setSearch, setRegion} = controlsSlice.actions
+export const {setRegions, setSearch, setRegion, clearControls} = controlsSlice.actions
 export default controlsSlice.reducer

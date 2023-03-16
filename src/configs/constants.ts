@@ -4,4 +4,6 @@ const ALL_COUNTRIES = `${API_URL}/all?fields=name,population,region,capital,flag
 
 const searchByCountry = (name: string) => `${API_URL}/name/` + name
 
-export {API_URL, ALL_COUNTRIES, searchByCountry}
+const filterByCode = (codes: string[]) => `${API_URL}/alpha?codes=${codes.join(',')}`
+
+export {API_URL, ALL_COUNTRIES, searchByCountry, filterByCode}
