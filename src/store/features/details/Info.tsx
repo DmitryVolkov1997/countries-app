@@ -1,43 +1,40 @@
-import React from 'react'
+import { ArrowBackIcon } from '@chakra-ui/icons'
+import { Box, Button, ButtonGroup, Heading, IconButton, Image, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Link, NavigateFunction } from 'react-router-dom'
+import { Country } from 'types/country'
+import { formatNumber } from '../../../utils/format-number'
 import styles from './Info.module.sass'
-import {Box, Button, ButtonGroup, Heading, IconButton, Image, ListItem, UnorderedList} from '@chakra-ui/react'
-import {Country} from 'types/country'
-import {ArrowBackIcon} from '@chakra-ui/icons'
-import {useNeighbors} from './use-neighbors'
-import {Link, NavigateFunction} from 'react-router-dom'
-import {formatNumber} from '../../../utils/format-number'
+import { useNeighbors } from './use-neighbors'
 
 export interface InfoProps extends Country {
 	navigate: NavigateFunction
 }
 
 export const Info = ({
-						 name,
-						 capital,
-						 region,
-						 population,
-						 nativeName,
-						 flags,
-						 borders,
-						 languages,
-						 topLevelDomain,
-						 subregion,
-						 currencies,
-						 navigate
-					 }: InfoProps) => {
+	name,
+	capital,
+	region,
+	population,
+	nativeName,
+	flags,
+	borders,
+	languages,
+	topLevelDomain,
+	subregion,
+	currencies,
+	navigate
+}: InfoProps) => {
 	const neighbors = useNeighbors(borders)
 
 	return (
 		<Box className={styles.info}>
 			<ButtonGroup size="md" isAttached variant="outline" onClick={() => navigate(-1)}>
-				<IconButton aria-label="Back" icon={<ArrowBackIcon/>}/>
+				<IconButton aria-label="Back" icon={<ArrowBackIcon />} />
 				<Button>Back</Button>
 			</ButtonGroup>
 			<Box className={styles.row}>
-				<Box boxShadow="dark-lg" rounded="md" w="full" h="full">
-					<Image className={styles.img} src={flags.svg} alt={name} w="full" h="full" objectFit="cover"/>
-				</Box>
 
+				<Image boxShadow="dark-lg" rounded="md" className={styles.img} src={flags.svg} alt={name} w="full" h="full" objectFit="fill" />
 
 				<Box className={styles.body}>
 					<Heading className={styles.title} as="h2">{name}</Heading>
@@ -115,10 +112,10 @@ export const Info = ({
 						</UnorderedList>
 					</Box>
 					{
-						neighbors.length && (
+						neighbors.length ? (
 							<Box className={styles.wrapper}>
 								<Box as="strong">
-									Border Countries::
+									Border Countries:
 								</Box>
 								<Box className={styles.borders}>
 									{
@@ -133,7 +130,7 @@ export const Info = ({
 									}
 								</Box>
 							</Box>
-						)
+						) : null
 					}
 				</Box>
 			</Box>

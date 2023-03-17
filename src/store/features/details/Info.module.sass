@@ -7,6 +7,7 @@
   display: grid
   width: 100%
   grid-template-columns: 1fr 1fr
+  grid-template-rows: 355px auto
   gap: 40px 100px
   justify-content: space-between
   margin-top: 60px
@@ -47,3 +48,22 @@
   display: block
   text-align: center
   padding: 4px 1.4px
+
+@media(max-width:991px)
+  .row
+    grid-template-columns: 1fr
+    grid-template-rows: 1fr
+
+@media(max-width:540px)
+  .row
+    gap: 40px 60px
+
+  .listGroup
+    grid-template-columns: 1fr
+    gap: 0 100px
+
+  .wrapper
+    grid-template-columns: auto
+    gap: 10px 30px
+    align-items: center
+    margin-top: 60px

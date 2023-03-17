@@ -1,8 +1,8 @@
-import {useAppDispatch, useAppSelector} from '../../redux-hooks'
-import {fetchNeighbors} from './details-actions'
-import {selectNeighbors} from './details-selectors'
-import {Country} from 'types/country'
-import {useEffect} from 'react'
+import { useEffect } from 'react'
+import { Country } from 'types/country'
+import { useAppDispatch, useAppSelector } from '../../redux-hooks'
+import { fetchNeighbors } from './details-actions'
+import { selectNeighbors } from './details-selectors'
 
 export const useNeighbors = (borders: string[]): Country[] => {
 	const dispatch = useAppDispatch()
@@ -11,7 +11,6 @@ export const useNeighbors = (borders: string[]): Country[] => {
 	useEffect(() => {
 		dispatch(fetchNeighbors(borders))
 	}, [borders, dispatch])
-
 
 	return neighbors
 }
